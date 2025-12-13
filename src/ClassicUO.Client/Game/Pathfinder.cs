@@ -166,7 +166,41 @@ namespace ClassicUO.Game
 
                         switch (obj)
                         {
-case Mobile mobile:                                {                                    bool shouldIgnore = ignoreGameCharacters || mobile.IsDead || mobile.IgnoreCharacters;                                                                        // Auto avoid settings: ignore NPCs or players based on profile                                    if (!shouldIgnore && ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.AutoAvoidObstacules)                                    {                                        bool isOtherPlayer = mobile.Serial != World.Player.Serial && mobile is PlayerMobile;                                        bool isNPC = !(mobile is PlayerMobile);                                                                                if ((ProfileManager.CurrentProfile.AutoAvoidIgnoreNPCs && isNPC) ||                                            (ProfileManager.CurrentProfile.AutoAvoidIgnorePlayers && isOtherPlayer))                                        {                                            shouldIgnore = true;                                        }                                    }                                                                        if (!shouldIgnore)                                    {                                        list.Add                                        (                                            new PathObject                                            (                                                (uint)PATH_OBJECT_FLAGS.POF_IMPASSABLE_OR_SURFACE,                                                mobile.Z,                                                mobile.Z + Constants.DEFAULT_CHARACTER_HEIGHT,                                                Constants.DEFAULT_CHARACTER_HEIGHT,                                                mobile                                            )                                        );                                    }                                    canBeAdd = false;                                    break;                                }
+                            case Mobile mobile:
+                                {
+                                    bool shouldIgnore = ignoreGameCharacters || mobile.IsDead || mobile.IgnoreCharacters;
+
+                                    // Auto avoid settings: ignore NPCs or players based on profile
+                                    if (!shouldIgnore && ProfileManager.CurrentProfile != null && ProfileManager.CurrentProfile.AutoAvoidObstacules)
+                                    {
+                                        bool isOtherPlayer = mobile.Serial != World.Player.Serial && mobile is PlayerMobile;
+                                        bool isNPC = !(mobile is PlayerMobile);
+
+                                        if ((ProfileManager.CurrentProfile.AutoAvoidIgnoreNPCs && isNPC) ||
+                                            (ProfileManager.CurrentProfile.AutoAvoidIgnorePlayers && isOtherPlayer))
+                                        {
+                                            shouldIgnore = true;
+                                        }
+                                    }
+
+                                    if (!shouldIgnore)
+                                    {
+                                        list.Add
+                                        (
+                                            new PathObject
+                                            (
+                                                (uint)PATH_OBJECT_FLAGS.POF_IMPASSABLE_OR_SURFACE,
+                                                mobile.Z,
+                                                mobile.Z + Constants.DEFAULT_CHARACTER_HEIGHT,
+                                                Constants.DEFAULT_CHARACTER_HEIGHT,
+                                                mobile
+                                            )
+                                        );
+                                    }
+
+                                    canBeAdd = false;
+
+                                    break;
                                 }
 
                             case Item item when item.IsMulti || item.ItemData.IsInternal:
