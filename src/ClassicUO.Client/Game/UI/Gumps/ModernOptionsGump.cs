@@ -507,6 +507,8 @@ namespace ClassicUO.Game.UI.Gumps
             content.Indent();
             content.AddToRight(new CheckboxWithLabel(lang.GetVideo.BackgroundFPS, isChecked: profile.ReduceFPSWhenInactive, valueChanged: (b) => { profile.ReduceFPSWhenInactive = b; }), true, page);
             content.RemoveIndent();
+            content.BlankLine();
+            content.AddToRight(new SliderWithLabel("Animation Frame Delay (ms)", 0, Theme.SLIDER_WIDTH, 50, 200, profile.AnimationFrameDelay, (r) => { profile.AnimationFrameDelay = r; }), true, page);
 
             content.BlankLine();
 
@@ -2296,6 +2298,11 @@ namespace ClassicUO.Game.UI.Gumps
             }), true, page);
             content.BlankLine();
             content.AddToRight(new CheckboxWithLabel(lang.GetGeneral.AutoAvoidObstacules, isChecked: profile.AutoAvoidObstacules, valueChanged: (b) => { profile.AutoAvoidObstacules = b; }), true, page);
+            content.Indent();
+            content.AddToRight(new CheckboxWithLabel("Ignore NPCs", isChecked: profile.AutoAvoidIgnoreNPCs, valueChanged: (b) => { profile.AutoAvoidIgnoreNPCs = b; }), true, page);
+            content.AddToRight(new CheckboxWithLabel("Ignore Players", isChecked: profile.AutoAvoidIgnorePlayers, valueChanged: (b) => { profile.AutoAvoidIgnorePlayers = b; }), true, page);
+            content.AddToRight(new CheckboxWithLabel("Use 8 Directions", isChecked: profile.AutoAvoidUse8Directions, valueChanged: (b) => { profile.AutoAvoidUse8Directions = b; }), true, page);
+            content.RemoveIndent();
 
             content.BlankLine();
             content.AddToRight(new CheckboxWithLabel(lang.GetTazUO.EnableImprovedBuffGump, 0, profile.UseImprovedBuffBar, (b) =>
