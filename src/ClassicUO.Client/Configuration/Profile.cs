@@ -144,6 +144,9 @@ namespace ClassicUO.Configuration
         public bool ShowMobilesHP { get; set; }
         public bool ShowTargetIndicator { get; set; }
         public bool AutoAvoidObstacules { get; set; }
+        public bool AutoAvoidIgnoreNPCs { get; set; } = false;
+        public bool AutoAvoidIgnorePlayers { get; set; } = false;
+        public bool AutoAvoidUse8Directions { get; set; } = true;
         public int MobileHPType { get; set; }     // 0 = %, 1 = line, 2 = both
         public int MobileHPShowWhen { get; set; } // 0 = Always, 1 - <100%
         public bool DrawRoofs { get; set; } = true;
@@ -182,6 +185,7 @@ namespace ClassicUO.Configuration
         public bool AlwaysRun { get; set; }
         public bool AlwaysRunUnlessHidden { get; set; }
         public bool SmoothMovements { get; set; } = true;
+        public int AnimationFrameDelay { get; set; } = 100; // ms between animation frames (50-200)
         public bool HoldDownKeyTab { get; set; } = true;
         public bool HoldShiftForContext { get; set; } = false;
         public bool HoldShiftToSplitStack { get; set; } = false;
