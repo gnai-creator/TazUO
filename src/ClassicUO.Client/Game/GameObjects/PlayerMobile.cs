@@ -33,6 +33,7 @@
 using ClassicUO.Assets;
 using ClassicUO.Configuration;
 using ClassicUO.Game.Data;
+using ClassicUO.Input;
 using ClassicUO.Game.Managers;
 using ClassicUO.Game.UI.Controls;
 using ClassicUO.Game.UI.Gumps;
@@ -1625,6 +1626,8 @@ namespace ClassicUO.Game.GameObjects
                 }
 
                 run |= ProfileManager.CurrentProfile.AlwaysRun;
+                if (ProfileManager.CurrentProfile.HoldShiftToWalk && Keyboard.Shift)
+                    run = false;
 
                 if (SpeedMode >= CharacterSpeedType.CantRun || Stamina <= 1 && !IsDead || IsHidden && ProfileManager.CurrentProfile.AlwaysRunUnlessHidden)
                 {

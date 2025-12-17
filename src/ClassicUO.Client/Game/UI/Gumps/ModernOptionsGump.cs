@@ -163,6 +163,7 @@ namespace ClassicUO.Game.UI.Gumps
             content.AddToRight(new CheckboxWithLabel(lang.GetGeneral.AlwaysRun, isChecked: profile.AlwaysRun, valueChanged: (b) => { profile.AlwaysRun = b; }), true, page);
             content.Indent();
             content.AddToRight(new CheckboxWithLabel(lang.GetGeneral.RunUnlessHidden, isChecked: profile.AlwaysRunUnlessHidden, valueChanged: (b) => { profile.AlwaysRunUnlessHidden = b; }), true, page);
+            content.AddToRight(new CheckboxWithLabel("Hold Shift to Walk", isChecked: profile.HoldShiftToWalk, valueChanged: (b) => { profile.HoldShiftToWalk = b; }), true, page);
             content.RemoveIndent();
 
             content.BlankLine();

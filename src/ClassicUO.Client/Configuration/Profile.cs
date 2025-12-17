@@ -184,6 +184,7 @@ namespace ClassicUO.Configuration
         public bool PathfindSingleClick { get; set; }
         public bool AlwaysRun { get; set; }
         public bool AlwaysRunUnlessHidden { get; set; }
+        public bool HoldShiftToWalk { get; set; }
         public bool SmoothMovements { get; set; } = true;
         public int AnimationFrameDelay { get; set; } = 100; // ms between animation frames (50-200)
         public bool HoldDownKeyTab { get; set; } = true;

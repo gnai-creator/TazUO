@@ -857,7 +857,10 @@ namespace ClassicUO.Game.Scenes
 
                 if (World.InGame && !Pathfinder.AutoWalking && dir != Direction.NONE)
                 {
-                    World.Player.Walk(dir, currentProfile.AlwaysRun);
+                    bool shouldRun = currentProfile.AlwaysRun;
+                    if (currentProfile.HoldShiftToWalk && Keyboard.Shift)
+                        shouldRun = false;
+                    World.Player.Walk(dir, shouldRun);
                 }
             }
 

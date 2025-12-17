@@ -92,6 +92,8 @@ namespace ClassicUO.Game.Scenes
                 }
 
                 bool run = mouseRange >= 190;
+                if (ProfileManager.CurrentProfile.HoldShiftToWalk && Keyboard.Shift)
+                    run = false;
 
                 if (World.Player.IsDrivingBoat && UIManager.GetGump<BoatControl>() == null)
                 {
